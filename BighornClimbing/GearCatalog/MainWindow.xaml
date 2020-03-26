@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GearCatalog"
         mc:Ignorable="d"
-        Title="Gear Catalog" Height="450" Width="800">
+        Title="Gear Catalog" Height="450" Width="800" MinHeight="150" MinWidth="600">
     <Grid>
-        <TextBox x:Name="UserInput" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="279" Height="20" Margin="10,31,0,0"/>
+        <TextBox x:Name="UserInput" Text="" VerticalAlignment="Top" Height="20" Margin="10,31,0,0" HorizontalAlignment="Left" Width="279"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Type text below:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
         <Button x:Name="AppendToListButton" Content="Append" HorizontalAlignment="Left" Margin="243,56,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <ListBox x:Name="GearList" HorizontalAlignment="Left" Height="393" Margin="294,31,0,0" VerticalAlignment="Top" Width="496">
-        </ListBox>
+        <ListBox x:Name="GearList" Margin="294,31,10,10"/>
         <TextBlock HorizontalAlignment="Left" Height="16" Margin="294,10,0,0" Text="Text will appear below:" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
     </Grid>
 </Window>
