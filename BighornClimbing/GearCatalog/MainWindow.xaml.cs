@@ -24,5 +24,11 @@ namespace GearCatalog
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GearList.Items.Add(UserInput.Text);
+            UserInput.Text = "";
+        }
     }
 }
