@@ -5,12 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GearCatalog"
         mc:Ignorable="d"
-        Title="Gear Catalog" Height="450" Width="800" MinHeight="150" MinWidth="600">
-    <Grid>
-        <TextBox x:Name="GearInputTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,31,0,0" HorizontalAlignment="Left" Width="279"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Please type your climbing gear name below:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
-        <Button x:Name="AppendToListButton" Content="Append" HorizontalAlignment="Left" Margin="243,56,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <ListBox x:Name="GearList" Margin="294,31,10,10"/>
-        <TextBlock HorizontalAlignment="Left" Height="16" Margin="294,10,0,0" Text="Gear List:" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+        Title="Gear Catalog" Height="500" Width="800" MinHeight="150" MinWidth="600">
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="295,10,0,0" Text="Gear List:" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+        <ListBox x:Name="GearList" Margin="295,31,10,10"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Please type your climbing gear name below:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="4"/>
+        <TextBox x:Name="GearNameTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,31,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="11,77,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,103,0,0" Text="Gear description:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="GearDescriptionTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,124,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,149,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,170,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,195,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="11,216,0,0" HorizontalAlignment="Left" Width="279"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,241,0,0" Text="Length in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="LengthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,262,0,0" HorizontalAlignment="Left" Width="279"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,287,0,0" Text="Width in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="WidthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,308,0,0" HorizontalAlignment="Left" Width="279"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,333,0,0" Text="Depth in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <TextBox x:Name="DepthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,354,0,0" HorizontalAlignment="Left" Width="279"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,379,0,0" Text="Locking?" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+        <ComboBox x:Name="LockingComboBox" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="278" SelectedIndex="1">
+            <ComboBoxItem Content="Yes"/>
+            <ComboBoxItem Content="No" IsSelected="True"/>
+        </ComboBox>
+        <Button x:Name="AppendToListButton" Content="Append" HorizontalAlignment="Left" Margin="243,427,0,0" Click="Button_Click" Height="20" VerticalAlignment="Top"/>
     </Grid>
 </Window>
