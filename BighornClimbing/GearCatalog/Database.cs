@@ -1,4 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Documents;
 
 namespace GearCatalog
 {
@@ -17,6 +21,7 @@ namespace GearCatalog
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = Conn;
+
             cmd.CommandText =
                 "INSERT INTO gear(" +
                 "name, category_id, description, brand, weight_grams, length_mm, width_mm, depth_mm, locking" +
@@ -34,6 +39,26 @@ namespace GearCatalog
 
             cmd.ExecuteNonQuery();
 
+        }
+
+        public List<Gear> ReadGear()
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = Conn;
+
+            cmd.CommandText = "SELECT name FROM gear";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            List<Gear> NewGearList = new List<Gear>();
+
+            while (rdr.Read())
+            {
+                Gear NewGear = new Gear();
+                NewGear.Name = rdr.GetString(0);
+                NewGearList.Add(NewGear);
+            }
+
+            return NewGearList;
         }
     }
 }
