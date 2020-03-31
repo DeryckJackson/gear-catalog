@@ -16,11 +16,8 @@ namespace GearCatalog
             InitializeComponent();
             Db = new Database();
             Db.Connect();
-            
-            List<Gear> NewGearList = new List<Gear>();
-            NewGearList = Db.ReadGear();
 
-            foreach (Gear element in NewGearList)
+            foreach (Gear element in Db.ReadGear())
             {
                 GearList.Items.Add(element.Name);
             }
