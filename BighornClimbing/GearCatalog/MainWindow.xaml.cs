@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace GearCatalog
 {
@@ -9,25 +12,22 @@ namespace GearCatalog
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Database Db;
+        private Database db;
+        private ObservableCollection<Gear> gearList;
 
         public MainWindow()
         {
             InitializeComponent();
-            Db = new Database();
-            Db.Connect();
+            db = new Database();
 
-            foreach (Gear element in Db.ReadGear())
-            {
-                GearList.Items.Add(element.Name);
-            }
+            gearList= db.ReadGear();
+
+            GearListBox.ItemsSource = gearList;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GearList.Items.Add(GearNameTextBox.Text);
-
             Gear NewGear = new Gear();
 
             NewGear.Name = GearNameTextBox.Text;
@@ -45,7 +45,9 @@ namespace GearCatalog
                 NewGear.Locking = 1;
             }
 
-            Db.InsertGear(NewGear);
+            int newGearId = db.InsertGear(NewGear);
+            NewGear.GearId = newGearId;
+            gearList.Add(NewGear);
 
             GearNameTextBox.Text = "";
             CategoryIdTextBox.Text = "";
@@ -56,6 +58,24 @@ namespace GearCatalog
             WidthTextBox.Text = "";
             DepthTextBox.Text = "";
             LockingComboBox.SelectedIndex = 1;
+        }
+
+        private void DeleteSelectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<Gear> gearToRemove = new List<Gear>();
+
+            foreach (var item in GearListBox.SelectedItems)
+            {
+                var gear = (Gear)item;
+                gearToRemove.Add(gear);
+            }
+
+            db.RemoveGear(gearToRemove);
+
+            foreach (Gear element in gearToRemove)
+            {
+                gearList.Remove(element);
+            }
         }
     }
 }

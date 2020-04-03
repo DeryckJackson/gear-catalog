@@ -1,23 +1,24 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Automation.Peers;
 
 namespace GearCatalog
 {
     public class Database
     {
-        private MySqlConnection Conn;
-
-        public void Connect()
+        private MySqlConnection Connect()
         {
             string connStr = "server=localhost;user=root;database=climbing_gear;port=3306;password=#iAmRoot";
-            Conn = new MySqlConnection(connStr);
-            Conn.Open();
+            return new MySqlConnection(connStr);
         }
 
-        public void InsertGear(Gear gear)
+        public int InsertGear(Gear gear)
         {
+            MySqlConnection conn = Connect();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = Conn;
+            cmd.Connection = conn;
+            conn.Open();
 
             cmd.CommandText =
                 "INSERT INTO gear(" +
@@ -35,27 +36,63 @@ namespace GearCatalog
             cmd.Parameters.AddWithValue("@Locking", gear.Locking);
 
             cmd.ExecuteNonQuery();
+            
+            cmd.CommandText = "SELECT LAST_INSERT_ID()";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            int newGearId = rdr.GetInt32(0);
+
+            conn.Close();
+
+            return newGearId;
 
         }
 
-        public List<Gear> ReadGear()
+        public ObservableCollection<Gear> ReadGear()
         {
+            MySqlConnection conn = Connect();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = Conn;
+            cmd.Connection = conn;
+            conn.Open();
 
-            cmd.CommandText = "SELECT name FROM gear";
+            cmd.CommandText = "SELECT * FROM gear";
             MySqlDataReader rdr = cmd.ExecuteReader();
 
-            List<Gear> NewGearList = new List<Gear>();
+            ObservableCollection<Gear> NewGearList = new ObservableCollection<Gear>();
 
             while (rdr.Read())
             {
                 Gear NewGear = new Gear();
-                NewGear.Name = rdr.GetString(0);
+                NewGear.GearId = rdr.GetInt32(0);
+                NewGear.CategoryId = rdr.GetInt32(1);
+                NewGear.Name = rdr.GetString(2);
+                NewGear.Description = rdr.GetString(3);
+                NewGear.Brand = rdr.GetString(4);
+                NewGear.WeightGrams = rdr.GetInt32(5);
+                NewGear.LengthMM = rdr.GetInt32(6);
+                NewGear.WidthMM = rdr.GetInt32(7);
+                NewGear.DepthMM = rdr.GetInt32(8);
+                NewGear.Locking = rdr.GetInt16(9);
+
                 NewGearList.Add(NewGear);
             }
 
             return NewGearList;
+        }
+
+        public void RemoveGear(List<Gear> gear)
+        {
+            MySqlConnection conn = Connect();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+
+            foreach (Gear element in gear)
+            {
+                conn.Open();
+                cmd.CommandText = $"DELETE FROM gear WHERE gear_id IN ({element.GearId})";
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
     }
 }
