@@ -42,23 +42,22 @@ namespace GearCatalog
             rdr.Read();
             int newGearId = rdr.GetInt32(0);
 
-            conn.Close();
-
             return newGearId;
 
         }
 
-        public ObservableCollection<Gear> ReadGear()
+        public List<Gear> ReadGear()
         {
             MySqlConnection conn = Connect();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             conn.Open();
 
-            cmd.CommandText = "SELECT * FROM gear";
+            cmd.CommandText = "SELECT gear_id, category_id, name, description, brand, weight_grams, length_mm," +
+                " width_mm, depth_mm, locking FROM gear";
             MySqlDataReader rdr = cmd.ExecuteReader();
 
-            ObservableCollection<Gear> NewGearList = new ObservableCollection<Gear>();
+            List<Gear> NewGearList = new List<Gear>();
 
             while (rdr.Read())
             {
@@ -80,18 +79,20 @@ namespace GearCatalog
             return NewGearList;
         }
 
-        public void RemoveGear(List<Gear> gear)
+        public void RemoveGear(IEnumerable<Gear> gear)
         {
+            List<Gear> newGearList = new List<Gear>(gear);
             MySqlConnection conn = Connect();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
+            conn.Open();
+            cmd.CommandText = "DELETE FROM gear WHERE gear_id IN (@GearId)";
 
-            foreach (Gear element in gear)
-            {
-                conn.Open();
-                cmd.CommandText = $"DELETE FROM gear WHERE gear_id IN ({element.GearId})";
+            foreach (Gear element in newGearList)
+            { 
+                cmd.Parameters.AddWithValue("@GearId", element.GearId);
                 cmd.ExecuteNonQuery();
-                conn.Close();
+                cmd.Parameters.Clear();
             }
         }
     }

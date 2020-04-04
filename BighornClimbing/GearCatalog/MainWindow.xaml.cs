@@ -20,7 +20,8 @@ namespace GearCatalog
             InitializeComponent();
             db = new Database();
 
-            gearList= db.ReadGear();
+            gearList = new ObservableCollection<Gear>(db.ReadGear());
+            
 
             GearListBox.ItemsSource = gearList;
 
@@ -66,8 +67,7 @@ namespace GearCatalog
 
             foreach (var item in GearListBox.SelectedItems)
             {
-                var gear = (Gear)item;
-                gearToRemove.Add(gear);
+                gearToRemove.Add((Gear)item);
             }
 
             db.RemoveGear(gearToRemove);
