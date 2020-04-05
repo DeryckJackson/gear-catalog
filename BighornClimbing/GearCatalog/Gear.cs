@@ -2,10 +2,11 @@
 {
     public class Gear
     {
-        public string Name { get; set; }
+        public int GearId { get; set; }
         //Remove this later when you figure out how to autogenerate it in the database
         public int CategoryId { get; set; }
-
+        
+        public string Name { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
         public int WeightGrams { get; set; }
