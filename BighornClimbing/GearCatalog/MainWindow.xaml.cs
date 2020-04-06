@@ -12,13 +12,12 @@ namespace GearCatalog
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Database db;
+        private Database db = new Database();
         private ObservableCollection<Gear> gearList;
 
         public MainWindow()
         {
             InitializeComponent();
-            db = new Database();
 
             gearList = new ObservableCollection<Gear>(db.ReadGear());
             
@@ -41,7 +40,7 @@ namespace GearCatalog
             NewGear.DepthMM = Int32.Parse(DepthTextBox.Text);
             NewGear.Locking = 0;
 
-            if (LockingComboBox.SelectedIndex == 0)
+            if (LockingComboBox.SelectedIndex == 1)
             {
                 NewGear.Locking = 1;
             }
@@ -58,7 +57,7 @@ namespace GearCatalog
             LengthTextBox.Text = "";
             WidthTextBox.Text = "";
             DepthTextBox.Text = "";
-            LockingComboBox.SelectedIndex = 1;
+            LockingComboBox.SelectedIndex = 0;
         }
 
         private void DeleteSelectionButton_Click(object sender, RoutedEventArgs e)
@@ -76,6 +75,12 @@ namespace GearCatalog
             {
                 gearList.Remove(element);
             }
+        }
+
+        private void EditGearButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditGearWindow editWin = new EditGearWindow();
+            editWin.Show();
         }
     }
 }
