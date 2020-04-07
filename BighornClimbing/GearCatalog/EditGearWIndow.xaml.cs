@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
+using System.Diagnostics;
 
 namespace GearCatalog
 {
@@ -8,15 +10,17 @@ namespace GearCatalog
     /// </summary>
     public partial class EditGearWindow : Window
     {
-        private Database db = new Database();
+        private Database db;
         private ObservableCollection<Gear> gearList;
 
         public EditGearWindow()
         {
             InitializeComponent();
+            db = new Database();
             gearList = new ObservableCollection<Gear>(db.ReadGear());
 
             GearToEditListbox.ItemsSource = gearList;
+            
         }
 
         private void GearToEditListbox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -47,7 +51,19 @@ namespace GearCatalog
 
         private void SaveGearButton_Click(object sender, RoutedEventArgs e)
         {
-            db.EditGear(gearList[GearToEditListbox.SelectedIndex]);
+            Gear gearToEdit = new Gear();
+            gearToEdit.Name = GearNameTextBox.Text;
+            gearToEdit.Description = GearDescriptionTextBox.Text;
+            gearToEdit.Brand = GearBrandTextBox.Text;
+            gearToEdit.WeightGrams = Int32.Parse(WeightGramsTextBox.Text);
+            gearToEdit.WidthMM = Int32.Parse(WidthTextBox.Text);
+            gearToEdit.DepthMM = Int32.Parse(DepthTextBox.Text);
+            gearToEdit.Locking = LockingComboBox.SelectedIndex;
+
+            db.EditGear(gearToEdit);
+
+            gearList[LockingComboBox.SelectedIndex] = gearToEdit;
+
 
             this.Close();
         }

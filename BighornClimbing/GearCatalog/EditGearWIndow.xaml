@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GearCatalog"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Edit Gear" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="GearToEditListbox" HorizontalAlignment="Left" Height="394" VerticalAlignment="Top" Width="390" Margin="10,30,0,0" SelectionChanged="GearToEditListbox_SelectionChanged">
             <ListBox.ItemTemplate>
