@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Windows.Automation.Peers;
 
 namespace GearCatalog
 {
@@ -35,8 +32,6 @@ namespace GearCatalog
             cmd.Parameters.AddWithValue("@Width_mm", gear.WidthMM);
             cmd.Parameters.AddWithValue("@Depth_mm", gear.DepthMM);
             cmd.Parameters.AddWithValue("@Locking", gear.Locking);
-
-            Debug.WriteLine(cmd.CommandText);
 
             cmd.ExecuteNonQuery();
             
@@ -117,10 +112,7 @@ namespace GearCatalog
             cmd.Parameters.AddWithValue("@Locking", gear.Locking);
             cmd.Parameters.AddWithValue("@GearId", gear.GearId);
 
-            Debug.WriteLine(gear.Name);
-
             cmd.ExecuteNonQuery();
-            Debug.WriteLine(gear.Name);
         }
     }
 }

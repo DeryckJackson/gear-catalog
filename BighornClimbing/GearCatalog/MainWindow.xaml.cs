@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Diagnostics;
 
 namespace GearCatalog
 {
@@ -21,7 +19,6 @@ namespace GearCatalog
 
             gearList = new ObservableCollection<Gear>(db.ReadGear());
             
-
             GearListBox.ItemsSource = gearList;
 
         }
@@ -81,6 +78,13 @@ namespace GearCatalog
         {
             EditGearWindow editWin = new EditGearWindow();
             editWin.Show();
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            gearList = new ObservableCollection<Gear>(db.ReadGear());
+            
+            GearListBox.ItemsSource = gearList;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace GearCatalog
 {
@@ -23,7 +23,7 @@ namespace GearCatalog
             
         }
 
-        private void GearToEditListbox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void GearToEditListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (GearToEditListbox.SelectedIndex == -1)
             {
@@ -52,6 +52,8 @@ namespace GearCatalog
         private void SaveGearButton_Click(object sender, RoutedEventArgs e)
         {
             Gear gearToEdit = new Gear();
+            gearToEdit.GearId = gearList[GearToEditListbox.SelectedIndex].GearId;
+            gearToEdit.CategoryId = gearList[GearToEditListbox.SelectedIndex].CategoryId;
             gearToEdit.Name = GearNameTextBox.Text;
             gearToEdit.Description = GearDescriptionTextBox.Text;
             gearToEdit.Brand = GearBrandTextBox.Text;
@@ -63,7 +65,6 @@ namespace GearCatalog
             db.EditGear(gearToEdit);
 
             gearList[LockingComboBox.SelectedIndex] = gearToEdit;
-
 
             this.Close();
         }
