@@ -64,8 +64,6 @@ namespace GearCatalog
 
             db.EditGear(gearToEdit);
 
-            gearList[LockingComboBox.SelectedIndex] = gearToEdit;
-
             this.Close();
         }
 

@@ -100,7 +100,8 @@ namespace GearCatalog
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             conn.Open();
-            cmd.CommandText = "UPDATE gear SET name = @Name, description = @Description, brand = @Brand, weight_grams = @WeightGrams, length_mm = @LengthMM, width_mm = @WidthMM, depth_mm = @DepthMM, locking = @Locking WHERE gear_id = @GearId";
+            cmd.CommandText = "UPDATE gear SET name = @Name, description = @Description, brand = @Brand, weight_grams = @WeightGrams, length_mm = @LengthMM, " +
+                "width_mm = @WidthMM, depth_mm = @DepthMM, locking = @Locking WHERE gear_id = @GearId";
             
             cmd.Parameters.AddWithValue("@Name", gear.Name);
             cmd.Parameters.AddWithValue("@Description", gear.Description);
