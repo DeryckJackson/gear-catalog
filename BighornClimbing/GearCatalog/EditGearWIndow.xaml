@@ -19,23 +19,34 @@
         <TextBox x:Name="GearNameTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,27,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,51,0,0" Text="Gear description:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
         <TextBox x:Name="GearDescriptionTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,70,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,88,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="14"/>
-        <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="405,109,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,134,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
-        <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="19" Margin="406,152,0,0" HorizontalAlignment="Left" Width="386"/>
-        <TextBlock HorizontalAlignment="Left" Margin="405,171,0,0" Text="Length in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
-        <TextBox x:Name="LengthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="406,190,0,0" HorizontalAlignment="Left" Width="386"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,211,0,0" Text="Width in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
-        <TextBox x:Name="WidthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,231,0,0" HorizontalAlignment="Left" Width="386"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,249,0,0" Text="Depth in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
-        <TextBox x:Name="DepthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,267,0,0" HorizontalAlignment="Left" Width="386"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,290,0,0" Text="Locking?" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
-        <ComboBox x:Name="LockingComboBox" HorizontalAlignment="Left" Margin="405,311,0,0" VerticalAlignment="Top" Width="68" SelectedIndex="1" Height="20">
+        <TextBlock HorizontalAlignment="Left" Margin="406,136,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="14"/>
+        <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="405,157,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,182,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
+        <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="19" Margin="406,200,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="405,219,0,0" Text="Length in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
+        <TextBox x:Name="LengthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="406,238,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,259,0,0" Text="Width in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
+        <TextBox x:Name="WidthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,279,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,297,0,0" Text="Depth in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
+        <TextBox x:Name="DepthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,315,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,338,0,0" Text="Locking?" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
+        <ComboBox x:Name="LockingComboBox" HorizontalAlignment="Left" Margin="405,359,0,0" VerticalAlignment="Top" Width="68" SelectedIndex="1" Height="20">
             <ComboBoxItem Content="No" IsSelected="True"/>
             <ComboBoxItem Content="Yes"/>
         </ComboBox>
-        <Button x:Name="SaveGearButton" Content="Save" HorizontalAlignment="Left" Margin="750,336,0,0" VerticalAlignment="Top" Click="SaveGearButton_Click"/>
-        <Button x:Name="CancelEditGearButton" Content="Cancel" HorizontalAlignment="Left" Margin="406,336,0,0" VerticalAlignment="Top" Click="CancelEditGearButton_Click"/>
+        <Button x:Name="SaveGearButton" Content="Save" HorizontalAlignment="Left" Margin="750,384,0,0" VerticalAlignment="Top" Click="SaveGearButton_Click"/>
+        <Button x:Name="CancelEditGearButton" Content="Cancel" HorizontalAlignment="Left" Margin="406,384,0,0" VerticalAlignment="Top" Click="CancelEditGearButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,93,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
+        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,116,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.182"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
 
     </Grid>
 </Window>

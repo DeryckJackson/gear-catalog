@@ -14,9 +14,7 @@ namespace GearCatalog
         {
             InitializeComponent();
 
-            gearList = new ObservableCollection<Gear>(db.ReadGear());
-            
-            GearListBox.ItemsSource = gearList;
+            RefreshList();
 
         }
 
@@ -74,13 +72,13 @@ namespace GearCatalog
         private void EditGearButton_Click(object sender, RoutedEventArgs e)
         {
             EditGearWindow editWin = new EditGearWindow();
+            editWin.Closed += (object sender, EventArgs e) => { RefreshList(); };
             editWin.Show();
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshList()
         {
             gearList = new ObservableCollection<Gear>(db.ReadGear());
-            
             GearListBox.ItemsSource = gearList;
         }
     }

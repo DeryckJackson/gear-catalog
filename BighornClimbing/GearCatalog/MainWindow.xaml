@@ -39,6 +39,5 @@
         <Button x:Name="AppendToListButton" Content="Append" HorizontalAlignment="Left" Margin="244,431,0,0" Click="Button_Click" Height="20" VerticalAlignment="Top"/>
         <Button x:Name="DeleteSelectionButton" Content="Delete" Margin="0,0,10,33" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="38" Click="DeleteSelectionButton_Click"/>
         <Button x:Name="EditGearButton" Content="Edit" HorizontalAlignment="Left" Margin="530,436,0,0" VerticalAlignment="Top" Click="EditGearButton_Click"/>
-        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="400,436,0,0" VerticalAlignment="Top" Click="RefreshButton_Click"/>
     </Grid>
 </Window>

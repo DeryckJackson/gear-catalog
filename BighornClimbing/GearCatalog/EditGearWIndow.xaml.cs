@@ -29,6 +29,7 @@ namespace GearCatalog
             {
                 GearNameTextBox.Text = "";
                 GearDescriptionTextBox.Text = "";
+                CategoryIdTextBox.Text = "";
                 GearBrandTextBox.Text = "";
                 WeightGramsTextBox.Text = "";
                 LengthTextBox.Text = "";
@@ -40,6 +41,7 @@ namespace GearCatalog
             {
                 GearNameTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Name;
                 GearDescriptionTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Description;
+                CategoryIdTextBox.Text = gearList[GearToEditListbox.SelectedIndex].CategoryId.ToString();
                 GearBrandTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Brand;
                 WeightGramsTextBox.Text = gearList[GearToEditListbox.SelectedIndex].WeightGrams.ToString();
                 LengthTextBox.Text = gearList[GearToEditListbox.SelectedIndex].LengthMM.ToString();
@@ -64,12 +66,12 @@ namespace GearCatalog
 
             db.EditGear(gearToEdit);
 
-            this.Close();
+            Close();
         }
 
         private void CancelEditGearButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
