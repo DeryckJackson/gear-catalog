@@ -10,6 +10,7 @@ namespace GearCatalog
         private Database db = new Database();
         private ObservableCollection<Gear> gearList;
 
+
         public MainWindow()
         {
             InitializeComponent();
