@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace GearCatalog
 {
@@ -77,5 +79,12 @@ namespace GearCatalog
                 gearList.Remove(element);
             }
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 }
