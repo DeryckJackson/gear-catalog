@@ -80,6 +80,9 @@ namespace GearCatalog
             }
         }
 
+        /* Uses a Text Composition event to capture user input and pass it to a regex that checks if the input is valid.
+        If the input doesn't match the regex expression, it passes the input to the input field. */
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
