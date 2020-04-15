@@ -19,6 +19,8 @@
         <TextBox x:Name="GearNameTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,27,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,51,0,0" Text="Gear description:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
         <TextBox x:Name="GearDescriptionTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,70,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,93,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
+        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,116,0,0" HorizontalAlignment="Left" Width="386"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,136,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="14"/>
         <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="405,157,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,182,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
@@ -36,7 +38,5 @@
         </ComboBox>
         <Button x:Name="SaveGearButton" Content="Save" HorizontalAlignment="Left" Margin="750,384,0,0" VerticalAlignment="Top" Click="SaveGearButton_Click"/>
         <Button x:Name="CancelEditGearButton" Content="Cancel" HorizontalAlignment="Left" Margin="406,384,0,0" VerticalAlignment="Top" Click="CancelEditGearButton_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,93,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
-        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="406,116,0,0" HorizontalAlignment="Left" Width="386"/>
     </Grid>
 </Window>
