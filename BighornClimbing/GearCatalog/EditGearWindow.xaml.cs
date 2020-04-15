@@ -5,9 +5,6 @@ using System.Windows.Controls;
 
 namespace GearCatalog
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class EditGearWindow : Window
     {
         private Database db;
