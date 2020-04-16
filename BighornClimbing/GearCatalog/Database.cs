@@ -1,7 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Automation.Peers;
 
 namespace GearCatalog
 {
@@ -94,6 +92,32 @@ namespace GearCatalog
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
+        }
+
+        public void EditGear(Gear gear)
+        {
+            MySqlConnection conn = Connect();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.CommandText = "UPDATE gear SET category_id = @CategoryId, name = @Name, " +
+                "description = @Description, brand = @Brand, " +
+                "weight_grams = @WeightGrams, length_mm = @LengthMM, " +
+                "width_mm = @WidthMM, depth_mm = @DepthMM, locking = @Locking " +
+                "WHERE gear_id = @GearId";
+
+            cmd.Parameters.AddWithValue("@CategoryId", gear.CategoryId);
+            cmd.Parameters.AddWithValue("@Name", gear.Name);
+            cmd.Parameters.AddWithValue("@Description", gear.Description);
+            cmd.Parameters.AddWithValue("@Brand", gear.Brand);
+            cmd.Parameters.AddWithValue("@WeightGrams", gear.WeightGrams);
+            cmd.Parameters.AddWithValue("@LengthMM", gear.LengthMM);
+            cmd.Parameters.AddWithValue("@WidthMM", gear.WidthMM);
+            cmd.Parameters.AddWithValue("@DepthMM", gear.DepthMM);
+            cmd.Parameters.AddWithValue("@Locking", gear.Locking);
+            cmd.Parameters.AddWithValue("@GearId", gear.GearId);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
