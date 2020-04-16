@@ -52,7 +52,7 @@ namespace GearCatalog
         {
             Gear gearToEdit = new Gear();
             gearToEdit.GearId = gearList[GearToEditListbox.SelectedIndex].GearId;
-            gearToEdit.CategoryId = gearList[GearToEditListbox.SelectedIndex].CategoryId;
+            gearToEdit.CategoryId = Int32.Parse(CategoryIdTextBox.Text);
             gearToEdit.Name = GearNameTextBox.Text;
             gearToEdit.Description = GearDescriptionTextBox.Text;
             gearToEdit.Brand = GearBrandTextBox.Text;
