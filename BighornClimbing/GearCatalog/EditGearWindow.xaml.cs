@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace GearCatalog
 {
@@ -69,6 +71,14 @@ namespace GearCatalog
         private void CancelEditGearButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        /* Regex matches any non-numeric characters. Any inputs this matches are
+        marked as "handled" to stop propagation. */
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
