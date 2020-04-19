@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+
 
 namespace GearCatalog
 {
@@ -70,6 +75,14 @@ namespace GearCatalog
             }
         }
 
+        /* Regex matches any non-numeric characters. Any inputs this matches are
+        marked as "handled" to stop propagation. */
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+      
         private void EditGearButton_Click(object sender, RoutedEventArgs e)
         {
             EditGearWindow editWin = new EditGearWindow();
@@ -82,5 +95,6 @@ namespace GearCatalog
             gearList = new ObservableCollection<Gear>(db.ReadGear());
             GearListBox.ItemsSource = gearList;
         }
+
     }
 }
