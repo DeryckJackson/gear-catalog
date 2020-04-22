@@ -86,8 +86,7 @@ namespace GearCatalog
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             conn.Open();
-            cmd.CommandText = "DELETE FROM gear " +
-                "WHERE gear_id IN (@GearId)";
+            cmd.CommandText = "DELETE FROM gear WHERE gear_id IN (@GearId)";
 
             foreach (Gear element in newGearList)
             { 
@@ -129,8 +128,7 @@ namespace GearCatalog
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             conn.Open();
-            cmd.CommandText = "SELECT category_id, name " +
-                "FROM category";
+            cmd.CommandText = "SELECT category_id, name FROM category";
 
             MySqlDataReader rdr = cmd.ExecuteReader();
 

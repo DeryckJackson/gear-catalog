@@ -13,7 +13,6 @@ namespace GearCatalog
     {
         private Database db;
         private ObservableCollection<Gear> gearList;
-        private List<Category> categoryList;
 
         public EditGearWindow()
         {
