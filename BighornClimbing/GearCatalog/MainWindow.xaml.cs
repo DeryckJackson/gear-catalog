@@ -9,6 +9,7 @@ namespace GearCatalog
     {
         private Database db = new Database();
         private ObservableCollection<Gear> gearList;
+        private List<Category> categoryList;
 
 
         public MainWindow()
@@ -24,7 +25,7 @@ namespace GearCatalog
             Gear NewGear = new Gear();
 
             NewGear.Name = GearNameTextBox.Text;
-            NewGear.CategoryId = Int32.Parse(CategoryIdTextBox.Text);
+            NewGear.CategoryId = categoryList[CategoryComboBox.SelectedIndex].Id;
             NewGear.Description = GearDescriptionTextBox.Text;
             NewGear.Brand = GearBrandTextBox.Text;
             NewGear.WeightGrams = Int32.Parse(WeightGramsTextBox.Text);
@@ -43,7 +44,7 @@ namespace GearCatalog
             gearList.Add(NewGear);
 
             GearNameTextBox.Text = "";
-            CategoryIdTextBox.Text = "";
+            CategoryComboBox.SelectedIndex = 0;
             GearDescriptionTextBox.Text = "";
             GearBrandTextBox.Text = "";
             WeightGramsTextBox.Text = "";
@@ -80,6 +81,8 @@ namespace GearCatalog
         private void RefreshList()
         {
             gearList = new ObservableCollection<Gear>(db.ReadGear());
+            categoryList = db.ReadCategories();
+            CategoryComboBox.ItemsSource = categoryList;
             GearListBox.ItemsSource = gearList;
         }
     }

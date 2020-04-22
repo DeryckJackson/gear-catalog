@@ -9,6 +9,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Height="16" Margin="295,10,0,0" Text="Gear List:" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
         <ListBox x:Name="GearListBox" Margin="295,31,10,58" SelectionMode="Extended">
+            <!--Pulling items from gearList after being set as the ItemsSource in MainWindow.xaml.cs-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -17,8 +18,15 @@
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Please type your climbing gear name below:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
         <TextBox x:Name="GearNameTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,31,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="11,77,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" Text="Category" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="21" Margin="10,77,0,0" VerticalAlignment="Top" Width="280">
+            <!--Pulling items from categoryList after being set as the ItemsSource in MainWindow.xaml.cs-->
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,103,0,0" Text="Gear description:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
         <TextBox x:Name="GearDescriptionTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="10,124,0,0" HorizontalAlignment="Left" Width="279" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="11,149,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
