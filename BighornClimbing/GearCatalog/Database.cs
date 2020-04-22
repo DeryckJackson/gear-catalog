@@ -51,8 +51,10 @@ namespace GearCatalog
             cmd.Connection = conn;
             conn.Open();
 
-            cmd.CommandText = "SELECT gear_id, category_id, name, description, brand, weight_grams, length_mm," +
-                " width_mm, depth_mm, locking FROM gear";
+            cmd.CommandText = "SELECT gear_id, category_id, name, " +
+                "description, brand, weight_grams, length_mm, " +
+                "width_mm, depth_mm, locking " +
+                "FROM gear";
             MySqlDataReader rdr = cmd.ExecuteReader();
 
             List<Gear> NewGearList = new List<Gear>();
@@ -118,6 +120,29 @@ namespace GearCatalog
             cmd.Parameters.AddWithValue("@GearId", gear.GearId);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public List<Category> ReadCategories()
+        {
+            MySqlConnection conn = Connect();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.CommandText = "SELECT category_id, name FROM category";
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            List<Category> categories = new List<Category>();
+
+            while (rdr.Read())
+            {
+                Category newCategory = new Category();
+                newCategory.Id = rdr.GetInt32(0);
+                newCategory.Name = rdr.GetString(1);
+                categories.Add(newCategory);
+            }
+
+            return categories;
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace GearCatalog
@@ -16,10 +18,8 @@ namespace GearCatalog
         {
             InitializeComponent();
             db = new Database();
-            gearList = new ObservableCollection<Gear>(db.ReadGear());
+            RefreshList();
 
-            GearToEditListbox.ItemsSource = gearList;
-            
         }
 
         private void GearToEditListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -28,7 +28,7 @@ namespace GearCatalog
             {
                 GearNameTextBox.Text = "";
                 GearDescriptionTextBox.Text = "";
-                CategoryIdTextBox.Text = "";
+                CategoryComboBox.SelectedIndex = 0;
                 GearBrandTextBox.Text = "";
                 WeightGramsTextBox.Text = "";
                 LengthTextBox.Text = "";
@@ -40,7 +40,7 @@ namespace GearCatalog
             {
                 GearNameTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Name;
                 GearDescriptionTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Description;
-                CategoryIdTextBox.Text = gearList[GearToEditListbox.SelectedIndex].CategoryId.ToString();
+                CategoryComboBox.SelectedValue = gearList[GearToEditListbox.SelectedIndex].CategoryId;
                 GearBrandTextBox.Text = gearList[GearToEditListbox.SelectedIndex].Brand;
                 WeightGramsTextBox.Text = gearList[GearToEditListbox.SelectedIndex].WeightGrams.ToString();
                 LengthTextBox.Text = gearList[GearToEditListbox.SelectedIndex].LengthMM.ToString();
@@ -54,7 +54,7 @@ namespace GearCatalog
         {
             Gear gearToEdit = new Gear();
             gearToEdit.GearId = gearList[GearToEditListbox.SelectedIndex].GearId;
-            gearToEdit.CategoryId = Int32.Parse(CategoryIdTextBox.Text);
+            gearToEdit.CategoryId = (int)CategoryComboBox.SelectedValue;
             gearToEdit.Name = GearNameTextBox.Text;
             gearToEdit.Description = GearDescriptionTextBox.Text;
             gearToEdit.Brand = GearBrandTextBox.Text;
@@ -71,6 +71,14 @@ namespace GearCatalog
         private void CancelEditGearButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void RefreshList()
+        {
+            gearList = new ObservableCollection<Gear>(db.ReadGear());
+            CategoryComboBox.ItemsSource = db.ReadCategories();
+            GearToEditListbox.ItemsSource = gearList;
+            CategoryComboBox.SelectedIndex = 0;
         }
 
         /* Regex matches any non-numeric characters. Any inputs this matches are

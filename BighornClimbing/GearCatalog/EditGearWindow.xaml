@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Edit Gear" Height="450" Width="800">
     <Grid>
+        <!--Pulling items from gearList after being set as the ItemsSource in EditGearWindow.xaml.cs-->
         <ListBox x:Name="GearToEditListbox" HorizontalAlignment="Left" Height="394" VerticalAlignment="Top" Width="390" Margin="10,30,0,0" SelectionChanged="GearToEditListbox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -18,10 +19,18 @@
         <TextBlock HorizontalAlignment="Left" Margin="404,6,0,0" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
         <TextBox x:Name="GearNameTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,27,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="404,92,0,0" Text="Gear description:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
-        <TextBox x:Name="CategoryIdTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,69,0,0" HorizontalAlignment="Left" Width="386"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,134,0,0" Text="Brand:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="14"/>
         <TextBox x:Name="GearDescriptionTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="405,111,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,50,0,0" Text="Category ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,50,0,0" Text="Category:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
+        <!-- SelectedValuePath searches for the value set in SelectedValue in EditGearWindow.xaml.cs to set the correct category in the ItemsSource.-->
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="21" Margin="406,71,0,0" VerticalAlignment="Top" Width="384" SelectedValuePath="Id">
+            <!--Pulling items from categoryList after being set as the ItemsSource in EditGearWindow.xaml.cs-->
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="406,150,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="405,175,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
         <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="19" Margin="404,193,0,0" HorizontalAlignment="Left" Width="386" PreviewTextInput="NumberValidationTextBox"/>
