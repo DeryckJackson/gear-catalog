@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+
 
 namespace GearCatalog
 {
@@ -9,7 +14,6 @@ namespace GearCatalog
     {
         private Database db = new Database();
         private ObservableCollection<Gear> gearList;
-        private List<Category> categoryList;
 
 
         public MainWindow()
@@ -25,7 +29,7 @@ namespace GearCatalog
             Gear NewGear = new Gear();
 
             NewGear.Name = GearNameTextBox.Text;
-            NewGear.CategoryId = categoryList[CategoryComboBox.SelectedIndex].Id;
+            NewGear.CategoryId = (int)CategoryComboBox.SelectedValue;
             NewGear.Description = GearDescriptionTextBox.Text;
             NewGear.Brand = GearBrandTextBox.Text;
             NewGear.WeightGrams = Int32.Parse(WeightGramsTextBox.Text);
@@ -71,6 +75,14 @@ namespace GearCatalog
             }
         }
 
+        /* Regex matches any non-numeric characters. Any inputs this matches are
+        marked as "handled" to stop propagation. */
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+      
         private void EditGearButton_Click(object sender, RoutedEventArgs e)
         {
             EditGearWindow editWin = new EditGearWindow();
@@ -81,9 +93,10 @@ namespace GearCatalog
         private void RefreshList()
         {
             gearList = new ObservableCollection<Gear>(db.ReadGear());
-            categoryList = db.ReadCategories();
-            CategoryComboBox.ItemsSource = categoryList;
+            CategoryComboBox.ItemsSource = db.ReadCategories();
             GearListBox.ItemsSource = gearList;
+            CategoryComboBox.SelectedIndex = 0;
         }
+
     }
 }
