@@ -77,9 +77,10 @@ namespace GearCatalog
         private void RefreshList()
         {
             gearList = new ObservableCollection<Gear>(db.ReadGear());
-            categoryList = db.ReadCategories();
-            CategoryComboBox.ItemsSource = categoryList;
+            CategoryComboBox.ItemsSource = db.ReadCategories();
             GearToEditListbox.ItemsSource = gearList;
+            CategoryComboBox.SelectedIndex = 0;
+        }
 
         /* Regex matches any non-numeric characters. Any inputs this matches are
         marked as "handled" to stop propagation. */
