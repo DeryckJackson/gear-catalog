@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace GearCatalog
 {
@@ -78,6 +80,14 @@ namespace GearCatalog
             categoryList = db.ReadCategories();
             CategoryComboBox.ItemsSource = categoryList;
             GearToEditListbox.ItemsSource = gearList;
+        }
+
+        /* Regex matches any non-numeric characters. Any inputs this matches are
+        marked as "handled" to stop propagation. */
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

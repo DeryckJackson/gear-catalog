@@ -33,13 +33,13 @@
         </ComboBox>
         <TextBox x:Name="GearBrandTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="406,150,0,0" HorizontalAlignment="Left" Width="386" AutomationProperties.IsRequiredForForm="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="405,175,0,0" Text="Weight in grams:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
-        <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="19" Margin="404,193,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBox x:Name="WeightGramsTextBox" Text="" VerticalAlignment="Top" Height="19" Margin="404,193,0,0" HorizontalAlignment="Left" Width="386" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="404,217,0,0" Text="Length in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="19"/>
-        <TextBox x:Name="LengthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="404,234,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBox x:Name="LengthTextBox" Text="" VerticalAlignment="Top" Height="20" Margin="404,234,0,0" HorizontalAlignment="Left" Width="386" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="404,259,0,0" Text="Width in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
-        <TextBox x:Name="WidthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,274,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBox x:Name="WidthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="404,274,0,0" HorizontalAlignment="Left" Width="386" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="405,297,0,0" Text="Depth in mm:" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="18"/>
-        <TextBox x:Name="DepthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="405,315,0,0" HorizontalAlignment="Left" Width="386"/>
+        <TextBox x:Name="DepthTextBox" Text="" VerticalAlignment="Top" Height="18" Margin="405,315,0,0" HorizontalAlignment="Left" Width="386" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,338,0,0" Text="Locking?" TextWrapping="Wrap" VerticalAlignment="Top" Width="386" Height="16"/>
         <ComboBox x:Name="LockingComboBox" HorizontalAlignment="Left" Margin="405,359,0,0" VerticalAlignment="Top" Width="68" SelectedIndex="1" Height="20">
             <ComboBoxItem Content="No" IsSelected="True"/>
