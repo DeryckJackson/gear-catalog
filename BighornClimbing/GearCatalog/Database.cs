@@ -7,7 +7,7 @@ namespace GearCatalog
     {
         private MySqlConnection Connect()
         {
-            string connStr = "server=localhost;user=root;database=climbing_gear;port=3306;password=#iAmRoot";
+            string connStr = "server=localhost;user=root;database=climbing_gear;port=3306;password=";
             return new MySqlConnection(connStr);
         }
 
